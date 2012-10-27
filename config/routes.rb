@@ -1,5 +1,9 @@
 SdrData::Application.routes.draw do
-  resources :sdrs
+  resources :sdrs do
+    collection do
+      post :fetch_sdr
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +54,7 @@ SdrData::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sdrs#index'
+  root :to => 'sdrs#new'
 
   # See how all your routes lay out with "rake routes"
 

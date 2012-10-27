@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Search SDR</h1>
+
+<%= render 'form' %>
+
 <p>
   <b>Name:</b>
   <%= @sdr.name %>
@@ -17,14 +21,10 @@
 
 <p>
   <b>Date:</b>
-  <%= @sdr.date %>
+  <%= @sdr.activation_date.strftime("%d %B %Y") %>
 </p>
 
 <p>
-  <b>Sp:</b>
+  <b>Service Provider:</b>
   <%= @sdr.sp %>
 </p>
-
-
-<%= link_to 'Edit', edit_sdr_path(@sdr) %> |
-<%= link_to 'Back', sdrs_path %>

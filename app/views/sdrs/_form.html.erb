@@ -1,37 +1,7 @@
-<%= form_for(@sdr) do |f| %>
-  <% if @sdr.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sdr.errors.count, "error") %> prohibited this sdr from being saved:</h2>
-
-      <ul>
-      <% @sdr.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_tag('/sdrs/fetch_sdr') do -%>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= text_field_tag :mobile_number %>
   </div>
-  <div class="field">
-    <%= f.label :mobile_number %><br />
-    <%= f.text_field :mobile_number %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.text_field :date %>
-  </div>
-  <div class="field">
-    <%= f.label :sp %><br />
-    <%= f.text_field :sp %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  
+  <div><%= submit_tag 'Punch it!' %></div>
+<% end -%>
