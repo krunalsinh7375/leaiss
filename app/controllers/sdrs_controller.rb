@@ -1,4 +1,6 @@
 class SdrsController < ApplicationController
+  autocomplete :sdr, :mobile_number
+
   # GET /sdrs
   # GET /sdrs.json
   def index

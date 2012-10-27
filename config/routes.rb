@@ -2,6 +2,7 @@ SdrData::Application.routes.draw do
   resources :sdrs do
     collection do
       post :fetch_sdr
+      get :autocomplete_sdr_mobile_number
     end
   end
 
