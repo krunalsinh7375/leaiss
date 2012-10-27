@@ -1,0 +1,31 @@
+<h1>Listing sdrs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Mobile number</th>
+    <th>Address</th>
+    <th>Date</th>
+    <th>Sp</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sdrs.each do |sdr| %>
+  <tr>
+    <td><%= sdr.name %></td>
+    <td><%= sdr.mobile_number %></td>
+    <td><%= sdr.address %></td>
+    <td><%= sdr.date %></td>
+    <td><%= sdr.sp %></td>
+    <td><%= link_to 'Show', sdr %></td>
+    <td><%= link_to 'Edit', edit_sdr_path(sdr) %></td>
+    <td><%= link_to 'Destroy', sdr, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sdr', new_sdr_path %>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @sdr.name %>
+</p>
+
+<p>
+  <b>Mobile number:</b>
+  <%= @sdr.mobile_number %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @sdr.address %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @sdr.date %>
+</p>
+
+<p>
+  <b>Sp:</b>
+  <%= @sdr.sp %>
+</p>
+
+
+<%= link_to 'Edit', edit_sdr_path(@sdr) %> |
+<%= link_to 'Back', sdrs_path %>
