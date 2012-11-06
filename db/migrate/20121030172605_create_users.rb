@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :designation
       t.string :city
       t.string :branch
-      t.boolean :admin, :default => 0
+      t.boolean :admin, :default => false
       t.string :secondary_email
       t.string :badge_num
       t.date   :dob
