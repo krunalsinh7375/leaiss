@@ -1,6 +1,7 @@
 class SdrsController < ApplicationController
   autocomplete :sdr, :mobile_number
-
+  
+  before_filter :authorize_person
   # GET /sdrs
   # GET /sdrs.json
   def index

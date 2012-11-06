@@ -34,5 +34,9 @@ data = [{mobile_number: "9137103676", name: "ZIMBA EDUCATION PVT.LTD", 	  activa
         
         
 data.each do |record|
-  Sdr.create(record)
+  # Sdr.create(record)
 end
+
+admin_params = {:name => "Ghanshyam Rathod", :email => "ghanshyam@me.com", :password => 123123, :password_confirmation => 123123, :city => 'US', :admin => true}
+
+User.create(admin_params)

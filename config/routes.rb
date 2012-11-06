@@ -1,4 +1,12 @@
 SdrData::Application.routes.draw do
+
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+
+  get "sign_up" => "users#new", :as => "sign_up"
+  resources :users
+  resources :sessions
+
   resources :sdrs do
     collection do
       post :fetch_sdr
@@ -55,7 +63,7 @@ SdrData::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sdrs#new'
+  root :to => 'sessions#new'
 
   # See how all your routes lay out with "rake routes"
 
