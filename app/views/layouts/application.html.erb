@@ -14,7 +14,7 @@
       
       <div id="user_nav">
         <% if current_user %>
-          Welcome <%= current_user.name %>| <%= link_to 'My Info', edit_user_path(current_user) %> | <%= link_to "Log out", log_out_path %>
+          <%= link_to 'Search SDR', new_sdr_path %> <% if current_user.admin %>| <%= link_to 'Activity logs', activities_path %> | <%= link_to 'Add New User', new_user_path %><% end %> | Welcome <%= current_user.name %>| <%= link_to 'My Info', edit_user_path(current_user) %> | <%= link_to "Log out", log_out_path %>
         <% else %>
           <!-- <%#= link_to "Sign up", sign_up_path %> or  -->
           <%= link_to "Log in", log_in_path %>

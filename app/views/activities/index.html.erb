@@ -1,0 +1,21 @@
+<h1>Available Users</h1>
+
+<table width='100%'>
+  <tr>
+    <th>Name</th>
+    <th>Email-address</th>
+    <th>phone</th>
+    <th>City</th>
+    <th>Activity</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone %></td>
+    <td><%= user.city %></td>
+    <td><%= link_to 'Show User Activities', activity_path(current_user) %></td>
+  </tr>
+<% end %>
+</table>

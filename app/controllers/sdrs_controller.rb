@@ -5,12 +5,13 @@ class SdrsController < ApplicationController
   # GET /sdrs
   # GET /sdrs.json
   def index
-    @sdrs = Sdr.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @sdrs }
-    end
+    redirect_to new_sdr_path
+    # @sdrs = Sdr.all
+    # 
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @sdrs }
+    # end
   end
 
   # GET /sdrs/1
@@ -31,6 +32,9 @@ class SdrsController < ApplicationController
       flash[:notice] = "Please provide correct Mobile number"
       redirect_to new_sdr_path
     else
+      #create activity_log entry
+      current_user.activities.create_activity_log(current_user,request,Time.now, @sdr.mobile_number, 'search')
+      
       redirect_to sdr_path(@sdr)
     end
   end
