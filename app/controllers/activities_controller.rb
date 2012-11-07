@@ -17,7 +17,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
-    @activities = current_user.activities
+    @selected_user = User.find_by_id(params[:id])
+    @activities = @selected_user.activities
 
     respond_to do |format|
       format.html # show.html.erb
