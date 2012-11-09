@@ -38,4 +38,19 @@ class SdrsController < ApplicationController
       redirect_to sdr_path(@sdr)
     end
   end
+
+  #custom method for multiple sdr search.
+  def fetch_multiple_sdrs
+    all_mobile_numers = params[:mobile_number].split(',')
+    @all_sdrs = []
+    unless all_mobile_numers.blank?
+      all_mobile_numers.each do |mobile|
+        mobile = mobile.delete(' ')
+        current_user.activities.create_activity_log(current_user,request,Time.now, mobile, 'search')
+        @all_sdrs << Sdr.find_by_mobile_number(mobile)
+      end
+      @all_sdrs = @all_sdrs.compact
+    end
+    # redirect_to list_multiple_sdrs_details_sdrs_path
+  end
 end

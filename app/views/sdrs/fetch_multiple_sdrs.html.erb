@@ -1,0 +1,31 @@
+<h1>List of sdrs</h1>
+
+<% if @all_sdrs.blank? %>
+  <div>No data is provided, please enter mobile numbers......</div>
+<% else %>
+  <table width="100%" border="1">
+    <tr>
+      <th>Name</th>
+      <th>Mobile number</th>
+      <th>Activation Date</th>
+      <th>Service Provider</th>
+      <th>Address</th>
+    </tr>
+    <% @all_sdrs.each do |sdr| %>
+      <tr>
+        <td><%= sdr.name %></td>
+        <td><%= sdr.mobile_number %></td>
+        <td><%= sdr.activation_date.strftime("%d %B %Y") %></td>
+        <td><%= sdr.sp %></td>
+        <td><%= sdr.address %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<br/>
+<br/>
+<br/>
+<%= link_to 'Back', multiple_sdr_search_sdrs_path %>
+
+

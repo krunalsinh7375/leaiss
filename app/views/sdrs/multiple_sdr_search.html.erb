@@ -1,0 +1,12 @@
+<h1>Search Multiple SDR's</h1>
+<p><strong>NOTE</strong>: please enter mobile numbers with comma separated values.<br/>
+  Ex: 9898223344,9999334455,9393938877</p>
+
+<%= form_tag('/sdrs/fetch_multiple_sdrs') do -%>
+  <div class="field">
+    <%= text_field_tag :mobile_number, '', :size => 85 %>
+    <%#= autocomplete_field_tag :mobile_number, '', autocomplete_sdr_mobile_number_sdrs_path, :size => 35 %>
+  </div>
+  
+  <div><%= submit_tag 'Punch it!' %></div>
+<% end -%>
