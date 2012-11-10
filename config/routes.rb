@@ -18,6 +18,15 @@ SdrData::Application.routes.draw do
     end
   end
 
+  resources :rtos do
+    collection do
+      post :fetch_rto_details
+      get :autocomplete_rto_mv_no
+      get :autocomplete_rto_chasis_no
+      get :autocomplete_rto_engine_no
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

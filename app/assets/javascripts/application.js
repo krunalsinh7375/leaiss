@@ -15,3 +15,23 @@
 //= require_tree .
 //= require jquery-ui
 //= require autocomplete-rails
+
+function update_search_filed(){
+  var value = $("#rto_search_field :selected").text();
+
+  if (value === "Motor Vehicle Number"){
+    $("#mv_number").show();
+    $("#chasis_number").hide();
+    $("#engine_number").hide();
+  }
+  if (value === "Chasis Number"){
+    $("#mv_number").hide();
+    $("#chasis_number").show();
+    $("#engine_number").hide();
+  }
+  if (value === "Engine Number"){
+    $("#mv_number").hide();
+    $("#chasis_number").hide();
+    $("#engine_number").show();
+  }
+}

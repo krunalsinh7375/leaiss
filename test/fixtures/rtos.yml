@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mv_no: MyString
+  year: 1
+  owner_name: MyString
+  owner_address: MyString
+  city: MyString
+  chasis_no: MyString
+  engine_no: MyString
+  model_des: MyString
+  color: MyString
+
+two:
+  mv_no: MyString
+  year: 1
+  owner_name: MyString
+  owner_address: MyString
+  city: MyString
+  chasis_no: MyString
+  engine_no: MyString
+  model_des: MyString
+  color: MyString
