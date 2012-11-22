@@ -1,0 +1,7 @@
+<%= form_tag('/cell_towers/fetch_cell_tower') do -%>
+  <div class="field">
+    <%= autocomplete_field_tag :cell_id, '', autocomplete_cell_tower_cell_id_cell_towers_path, :size => 35, :placeholder => "Enter Cell-ID" %>
+  </div>
+  
+  <div><%= submit_tag 'Punch it!' %></div>
+<% end -%>

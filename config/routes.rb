@@ -27,6 +27,14 @@ SdrData::Application.routes.draw do
     end
   end
 
+  resources :cell_towers do
+    collection do
+      post :fetch_cell_tower
+      get :autocomplete_cell_tower_cell_id
+    end
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

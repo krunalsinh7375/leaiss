@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cell_id: MyString
+  lac: MyString
+  cgi: MyString
+  address: MyString
+  latitude: 2012-11-22
+  longitude: MyString
+  tower_type: MyString
+  company: MyString
+
+two:
+  cell_id: MyString
+  lac: MyString
+  cgi: MyString
+  address: MyString
+  latitude: 2012-11-22
+  longitude: MyString
+  tower_type: MyString
+  company: MyString

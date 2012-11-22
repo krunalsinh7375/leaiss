@@ -8,7 +8,8 @@ class Activity < ActiveRecord::Base
     :login    => 'Login'}
   
   def self.create_activity_log(current_user, request_params, current_time, content, activity_type)
-    name = activity_type.eql?('search') ? ACTIVITY_TYPES[:search] : ACTIVITY_TYPES[:login]
+    # name = activity_type.eql?('search') ? ACTIVITY_TYPES[:search] : ACTIVITY_TYPES[:login]
+    name = activity_type
     self.create(:name         => name,
                 :user_id      => current_user.id,
                 :ip_address   => request_params.remote_ip,

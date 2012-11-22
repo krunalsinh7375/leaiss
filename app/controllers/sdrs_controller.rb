@@ -2,23 +2,15 @@ class SdrsController < ApplicationController
   autocomplete :sdr, :mobile_number
   
   before_filter :authorize_person
-  # GET /sdrs
-  # GET /sdrs.json
+  around_filter :wrap_in_search, :only => [:fetch_multiple_sdrs, :show]
+
   def index
     redirect_to new_sdr_path
-    # @sdrs = Sdr.all
-    # 
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: @sdrs }
-    # end
   end
 
-  # GET /sdrs/1
-  # GET /sdrs/1.json
   def show
-    @sdr = Sdr.find(params[:id])
-
+    @sdr = Sdr.find_by_mobile_number(params[:id])
+    params[:mobile_number] = @sdr.mobile_number
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @sdr }
@@ -32,9 +24,6 @@ class SdrsController < ApplicationController
       flash[:notice] = "Please provide correct Mobile number"
       redirect_to new_sdr_path
     else
-      #create activity_log entry
-      current_user.activities.create_activity_log(current_user,request,Time.now, @sdr.mobile_number, 'search')
-      
       redirect_to sdr_path(@sdr)
     end
   end
@@ -46,11 +35,18 @@ class SdrsController < ApplicationController
     unless all_mobile_numers.blank?
       all_mobile_numers.each do |mobile|
         mobile = mobile.delete(' ')
-        current_user.activities.create_activity_log(current_user,request,Time.now, mobile, 'search')
         @all_sdrs << Sdr.find_by_mobile_number(mobile)
       end
       @all_sdrs = @all_sdrs.compact
     end
-    # redirect_to list_multiple_sdrs_details_sdrs_path
+  end
+
+  private
+
+  def wrap_in_search
+    search_detail = params[:mobile_number] || Sdr.find_by_mobile_number(params[:id]).try(:mobile_number)
+    #create activity_log entry
+    current_user.activities.create_activity_log(current_user,request,Time.now, search_detail, 'Search')
+    yield
   end
 end
