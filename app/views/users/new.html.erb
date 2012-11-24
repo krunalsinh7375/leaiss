@@ -12,6 +12,10 @@
     </div>
   <% end %>
   <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
@@ -23,5 +27,23 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </p>
+
+  <!-- only for demo -->
+  <p>
+    SDR-Search
+    <%= check_box_tag 'sdr_search' %>
+  </p>
+
+  <p>
+    RTO-Search
+    <%= check_box_tag 'rto_search' %>
+  </p>
+
+  <p>
+    Cell-tower Search
+    <%= check_box_tag 'cell_search' %>
+  </p>
+  <!-- only for demo -->
+
   <p class="button"><%= f.submit %></p>
 <% end %>
