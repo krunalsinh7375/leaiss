@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <% if controller.controller_name.eql?('sessions') && controller.action_name.eql?('new') %>
+      <% if (controller.controller_name.eql?('sessions') && controller.action_name.eql?('new') || controller.controller_name.eql?('homes') && controller.action_name.eql?('index')) %>
         <%= link_to "Law Enforcement Agency Informatics Solutions", '#', id: "logo" %>
       <% else %>
         <%= link_to "Leais", '#', id: "logo" %>
@@ -16,7 +16,7 @@
                 <li><%= link_to 'Multiple SDR Search', multiple_sdr_search_sdrs_path %></li>
               </ul>
             </li>
-            <li><%= link_to "Rto search", new_rto_path %></li>
+            <li><%= link_to "Vehicle search", new_rto_path %></li>
             <li><%= link_to "Tower search", new_cell_tower_path %></li>
             <li><%= link_to "Profile", edit_user_path(current_user) %></li>
             <% if current_user.admin %>

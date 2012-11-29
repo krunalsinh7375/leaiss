@@ -5997,3 +5997,17 @@ footer {
     }
   }
 }
+
+h15,
+  {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 40px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+  font-size: 200%;
+}
+
+.big_font {font-size:25px;}
+.right_alignment {text-align: right; font-family: inherit; font-size: 100%; vertical-align: baseline;}
