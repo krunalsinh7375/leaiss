@@ -1,47 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sdr-Data</title>
+    <meta charset="utf-8">
+    <title>Data Analysis<%#= full_title(yield(:title)) %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    "application", media: "all" %>
+    <%#= stylesheet_link_tag    "bootstrap.css", media: "all" %>
+    <%#= stylesheet_link_tag    "bootstrap-responsive.css", media: "all" %>
     <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tag %>
-
-  <!-- THIS IS USED FOR RIGHT CLICK DESABLE -->
-    <script>
-      var isNS = (navigator.appName == "Netscape") ? 1 : 0;
-
-      if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
-
-      function mischandler(){
-      return false;
-      }
-
-      function mousehandler(e){
-      var myevent = (isNS) ? e : event;
-      var eventbutton = (isNS) ? myevent.which : myevent.button;
-      if((eventbutton==2)||(eventbutton==3)) return false;
-      }
-      document.oncontextmenu = mischandler;
-      document.onmousedown = mousehandler;
-      document.onmouseup = mousehandler;
-    </script>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>    
   </head>
   <body>
-    <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
-      <% end %>
-      
-      <div id="user_nav">
-        <% if current_user %>
-          <%= link_to 'SDR Search', new_sdr_path %> | <%= link_to 'RTO Search', new_rto_path %> | <%= link_to 'Multiple SDR Search', multiple_sdr_search_sdrs_path %>| <%= link_to 'Cell Tower Search', new_cell_tower_path %> <% if current_user.admin %>| <%= link_to 'Activity logs', activities_path %> | <%= link_to 'Add New User', new_user_path %><% end %> | Welcome <%= current_user.name %>| <%= link_to 'My Info', edit_user_path(current_user) %> | <%= link_to "Log out", log_out_path %>
-        <% else %>
-          <!-- <%#= link_to "Sign up", sign_up_path %> or  -->
-          <%= link_to "Log in", log_in_path %>
-        <% end %>
-      </div>
-      
+    <%= render 'layouts/header' %>
+    <div class="container">
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>

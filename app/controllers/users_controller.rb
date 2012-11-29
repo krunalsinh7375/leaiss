@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :check_admin_access, :except => [:edit, :update]
+  before_filter :authorize_person
   
   def new
     @user = User.new

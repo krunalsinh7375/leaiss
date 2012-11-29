@@ -1,25 +1,28 @@
-<p id="notice"><%= notice %></p>
+<legend>Activites</legend>
 
-
-
-<table width='100%'>
-  <tr>
-    <th width="15%">User</th>
-    <th width="15%">IP-Address</th>
-    <th width="15%">Access Time</th>
-    <th width="10%">Activity Name</th>
-    <th width="15%">Access Content</th>
-    <th width="30%">Browser Info</th>
-  </tr>
-  
-  <% @activities.each do |activity| %>
-    <tr>
-      <td><%= activity.user.name %></td>
-      <td><%= activity.ip_address %></td>
-      <td><%= activity.time_stamp.strftime("%b %d %I:%M %p") %></td>
-      <td><%= activity.name %></td>
-      <td><%= activity.content %></td>
-      <td><%= activity.browser_info %></td>
-    </tr>
-  <% end %>
-</table>
+<div >
+  <table class="table table-striped" border="0">
+    <thead>
+      <tr>
+        <th style="width: 20%">User</th>
+        <th style="width: 10%">IP-Address</th>
+        <th style="width: 15%">Access Time</th>
+        <th style="width: 15%">Activity Name</th>
+        <th style="max-width: 20%">Access Content</th>
+        <th style="width: 20%">Browser Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @activities.each do |activity| %>
+        <tr>
+          <td><%= activity.user.name %></td>
+          <td><%= activity.ip_address %></td>
+          <td><%= activity.time_stamp.strftime("%b %d %I:%M %p") %></td>
+          <td><%= activity.name %></td>
+          <td style="width:100px;"><%= activity.content %></td>
+          <td><%= activity.browser_info %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,62 +1,75 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<div class="well">
+  <fieldset>
+    <legend>Edit Profile</legend>
+    
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'span3' %>
+      </p>
+      
+      <p>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'span3' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+      <p>
+        <%= f.label :phone %>
+        <%= f.text_field :phone, class: 'span3' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+      <p>
+        <%= f.label :designation %>
+        <%= f.text_field :designation, class: 'span3'%>
+      </p>
 
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
+      <p>
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'span3' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :designation %><br />
-    <%= f.text_field :designation %>
-  </div>
+      <p>
+        <%= f.label :branch %>
+        <%= f.text_field :branch, class: 'span3' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
+      <p>
+        <%= f.label :secondary_email %>
+        <%= f.text_field :secondary_email, class: 'span3' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :branch %><br />
-    <%= f.text_field :branch %>
-  </div>
+      <p>
+        <%= f.label :badge_num %>
+        <%= f.text_field :badge_num, class: 'span3' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :secondary_email %><br />
-    <%= f.text_field :secondary_email %>
-  </div>
+      <p>
+        <%= f.label :dob %>
+        <%= f.text_field :dob, class: 'span3 datepicker' %>
+      </p>
 
-  <div class="field">
-    <%= f.label :badge_num %><br />
-    <%= f.text_field :badge_num %>
-  </div>
+      <%= submit_tag "Submit", class: 'btn'%>
+    <% end %>
+    
+  </fieldset>
+</div>
 
-  <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.text_field :dob %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+
+
+<script type="text/javascript">
+    $( '[type=date], .datepicker' ).pickadate()
+</script>

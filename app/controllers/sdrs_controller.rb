@@ -2,7 +2,8 @@ class SdrsController < ApplicationController
   autocomplete :sdr, :mobile_number
   
   before_filter :authorize_person
-  around_filter :wrap_in_search, :only => [:fetch_multiple_sdrs, :show]
+  around_filter :wrap_in_search, :only => [:show]
+  around_filter :wrap_in_multiple_search, :only => [:fetch_multiple_sdrs]
 
   def index
     redirect_to new_sdr_path
@@ -49,4 +50,13 @@ class SdrsController < ApplicationController
     current_user.activities.create_activity_log(current_user,request,Time.now, search_detail, 'Search')
     yield
   end
+  
+  def wrap_in_multiple_search
+    all_mobile_numbers = params[:mobile_number]
+    searched_data =  all_mobile_numbers.split(',').join(", ")
+    #create activity_log entry
+    current_user.activities.create_activity_log(current_user,request,Time.now, searched_data, 'Multiple Search')
+    yield
+  end
+  
 end

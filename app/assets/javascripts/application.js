@@ -15,6 +15,7 @@
 //= require_tree .
 //= require jquery-ui
 //= require autocomplete-rails
+//= require bootstrap
 
 function update_search_filed(){
   var value = $("#rto_search_field :selected").text();

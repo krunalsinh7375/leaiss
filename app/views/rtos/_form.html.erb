@@ -1,26 +1,33 @@
-<%= form_tag('/rtos/fetch_rto_details') do -%>
-  <div class="field">
-    Note: Either use three of one<br/>
-    <%#= text_field_tag :mv_no %>
-    <%#= text_field_tag :mv_no,'', :placeholder => "placeholder text" %>
-    <!-- <input type="text" placeholder="keywords..." title="Search..." class="search" id="srch-global" /> -->
-    <div>
-      <%= select_tag "rto_search_field", "<option>Motor Vehicle Number</option><option>Chasis Number</option><option>Engine Number</option>".html_safe, :class => 'form_input', :onchange => "update_search_filed();" %>
-    </div>
-    <br/>
-    <div id="mv_number">
-      <%= autocomplete_field_tag :mv_no, '', autocomplete_rto_mv_no_rtos_path, :size => 35,:placeholder => "Enter mv-number...." %>
-    </div>
+<div class="well">
+  <fieldset>
+    <legend>Vehicle Search</legend>
     
-    <div id="chasis_number" style="display:none;">
-      <%= autocomplete_field_tag :chasis_no, '', autocomplete_rto_chasis_no_rtos_path, :size => 35,:placeholder => "Enter chasis number...." %>
-    </div>
-    
-    <div id="engine_number" style="display:none;">
-      <%= autocomplete_field_tag :engine_no, '', autocomplete_rto_engine_no_rtos_path, :size => 35,:placeholder => "Enter engine number...." %>
-    </div>
-    
-  </div>
-  
-  <div><%= submit_tag 'Punch it!' %></div>
-<% end -%>
+    <%= form_tag('/rtos/fetch_rto_details') do -%>
+      <div class="field">
+        <em>Note: Either use three of one</em>
+        <%#= text_field_tag :mv_no %>
+        <%#= text_field_tag :mv_no,'', :placeholder => "placeholder text" %>
+        <!-- <input type="text" placeholder="keywords..." title="Search..." class="search" id="srch-global" /> -->
+        <div>
+          <%= select_tag "rto_search_field", "<option>Motor Vehicle Number</option><option>Chasis Number</option><option>Engine Number</option>".html_safe, :class => 'form_input', :onchange => "update_search_filed();" %>
+        </div>
+        <div id="mv_number">
+          <%= autocomplete_field_tag :mv_no, '', autocomplete_rto_mv_no_rtos_path, :size => 35,:placeholder => "Enter mv-number...." %>
+        </div>
+
+        <div id="chasis_number" style="display:none;">
+          <%= autocomplete_field_tag :chasis_no, '', autocomplete_rto_chasis_no_rtos_path, :size => 35,:placeholder => "Enter chasis number...." %>
+        </div>
+
+        <div id="engine_number" style="display:none;">
+          <%= autocomplete_field_tag :engine_no, '', autocomplete_rto_engine_no_rtos_path, :size => 35,:placeholder => "Enter engine number...." %>
+        </div>
+
+      </div>
+
+      <div><%= submit_tag 'Search', class: 'btn' %></div>
+    <% end -%>
+  </fieldset>
+</div>
+
+

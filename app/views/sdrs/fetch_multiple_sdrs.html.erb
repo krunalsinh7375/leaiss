@@ -1,31 +1,56 @@
-<h1>List of sdrs</h1>
+<div class="well">
+  <fieldset>
+    <legend>Search Multiple SDR</legend>
+    <em>
+      <small>
+        <strong>NOTE</strong>: please enter mobile numbers with comma separated values.<br/>
+          Ex: 9898223344,9999334455,9393938877
+      </small>
+    </em>
+    <br/>
+    <br/>
+    
+    <%= form_tag('/sdrs/fetch_multiple_sdrs') do -%>
+      <div class="field">
+        <%= text_field_tag :mobile_number, '', :size => 85, :placeholder => "9898223344,9999334455,9393938877 ", class: 'span8' %>
+      </div>
 
-<% if @all_sdrs.blank? %>
-  <div>No data is provided, please enter mobile numbers......</div>
-<% else %>
-  <table width="100%" border="1">
-    <tr>
-      <th>Name</th>
-      <th>Mobile number</th>
-      <th>Activation Date</th>
-      <th>Service Provider</th>
-      <th>Address</th>
-    </tr>
-    <% @all_sdrs.each do |sdr| %>
-      <tr>
-        <td><%= sdr.name %></td>
-        <td><%= sdr.mobile_number %></td>
-        <td><%= sdr.activation_date.strftime("%d %B %Y") %></td>
-        <td><%= sdr.sp %></td>
-        <td><%= sdr.address %></td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+      <div><%= submit_tag 'Search', class: 'btn' %></div>
+    <% end -%>
+  </fieldset>
+</div>
 
-<br/>
-<br/>
-<br/>
-<%= link_to 'Back', multiple_sdr_search_sdrs_path %>
+<div class="well">
+  
+  <legend>Multiple SDR Detail</legend>
 
+  <div>
+    <% if @all_sdrs.blank? %>
+      <div>No data is provided, please enter mobile numbers......</div>
+    <% else %>
+      <table class="table table-striped" border="0">
+        <tr>
+          <th style="width: 12%">Mobile number</th>
+          <th style="width: 23%">Name</th>
+          <th style="width: 40%">Address</th>
+          <th style="width: 15%">Activation Date</th>
+          <th style="width: 10%">Service Provider</th>
+        </tr>
+        <% @all_sdrs.each do |sdr| %>
+          <tr>
+            <td><%= sdr.mobile_number %></td>
+            <td><%= sdr.name %></td>
+            <td><%= sdr.address %></td>
+            <td><%= sdr.activation_date.strftime("%d %B %Y") %></td>
+            <td><%= sdr.sp %></td>
+          </tr>
+        <% end %>
+      </table>
+  </div>
+  
+  <fieldset>
+  </fieldset>
+  
 
+  <% end %>
+</div>
