@@ -16,8 +16,9 @@
                 <li><%= link_to 'Multiple SDR Search', multiple_sdr_search_sdrs_path %></li>
               </ul>
             </li>
-            <li><%= link_to "Vehicle search", new_rto_path %></li>
             <li><%= link_to "Tower search", new_cell_tower_path %></li>
+            <li><%= link_to "Vehicle search", new_rto_path %></li>
+            <li><%= link_to "IP/Domain lookup", new_ipdr_path %></li>
             <li><%= link_to "Profile", edit_user_path(current_user) %></li>
             <% if current_user.admin %>
               <li><%= link_to "Activity log", activities_path %></li>

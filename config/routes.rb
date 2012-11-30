@@ -35,6 +35,12 @@ SdrData::Application.routes.draw do
     end
   end
 
+  resources :ipdrs do
+    collection do
+      post :ipdr_lookup
+      get :list_lookup_details
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

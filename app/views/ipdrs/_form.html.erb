@@ -1,0 +1,17 @@
+<div class="well">
+  <p id="notice"><%= notice %></p>
+  <fieldset>
+    <legend>IP/Domian lookup</legend>
+    <%= form_tag('/ipdrs/ipdr_lookup') do -%>
+      <div class="field">
+        <%= text_field_tag :ip_or_url %>
+      </div>
+
+      <div><%= submit_tag 'Search', class: 'btn' %></div>
+    <% end -%>
+  </fieldset>
+</div>
+
+<% unless @client_data.nil? %>
+  <%= @client_data %>
+<% end %>
