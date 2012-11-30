@@ -18,7 +18,8 @@ class ActivitiesController < ApplicationController
   # GET /activities/1.json
   def show
     @selected_user = User.find_by_id(params[:id])
-    @activities = @selected_user.activities.order("created_at DESC")
+    # @activities = @selected_user.activities.order("created_at DESC")
+    @activities =  @selected_user.activities.order("id DESC").page(params[:page]).per(30)
 
     respond_to do |format|
       format.html # show.html.erb

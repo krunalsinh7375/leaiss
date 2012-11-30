@@ -1,7 +1,8 @@
 <div class='right_alignment'><%= image_tag("xls_icon.gif") %> Xls Export | <%= image_tag("printer.gif") %> printer</div>
 <legend>Activites</legend>
 
-<div >
+<div>
+  <div><%= paginate @activities %></div>
   <table class="table table-striped" border="0">
     <thead>
       <tr>
@@ -26,4 +27,5 @@
       <% end %>
     </tbody>
   </table>
+  <div><%= paginate @activities %></div>
 </div>
