@@ -12,4 +12,7 @@
  *= require_tree .
  *= require jquery-ui.css
  *= require bootstrap
+ *= require docs
+ *= require bootstrap-responsive
+ *= require layout
 */
