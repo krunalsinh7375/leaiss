@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122062301) do
+ActiveRecord::Schema.define(:version => 20121221194845) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,28 @@ ActiveRecord::Schema.define(:version => 20121122062301) do
     t.string   "content"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "cdr_records", :force => true do |t|
+    t.integer  "cdr_id"
+    t.datetime "call_date"
+    t.string   "call_type",      :limit => 20
+    t.integer  "duration"
+    t.string   "calling_number", :limit => 40
+    t.string   "called_number",  :limit => 40
+    t.string   "imei",           :limit => 20
+    t.string   "first_cell_id",  :limit => 16
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "cdrs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "mobile_no",  :limit => 12
+    t.string   "name",       :limit => 50
+    t.string   "case_no",    :limit => 25
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "cell_towers", :force => true do |t|
@@ -38,17 +60,15 @@ ActiveRecord::Schema.define(:version => 20121122062301) do
   end
 
   create_table "rtos", :force => true do |t|
-    t.string   "mv_no"
-    t.integer  "year"
-    t.string   "owner_name"
-    t.string   "owner_address"
-    t.string   "city"
-    t.string   "chasis_no"
-    t.string   "engine_no"
-    t.string   "model_des"
-    t.string   "color"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string "mv_no",         :limit => 20
+    t.string "year",          :limit => 5
+    t.string "owner_name",    :limit => 80
+    t.string "owner_address", :limit => 200
+    t.string "city",          :limit => 15
+    t.string "chasis_no",     :limit => 45
+    t.string "engine_no",     :limit => 45
+    t.string "model_des",     :limit => 45
+    t.string "color",         :limit => 45
   end
 
   create_table "sdrs", :force => true do |t|

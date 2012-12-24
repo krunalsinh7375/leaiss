@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="container">
       <% if (controller.controller_name.eql?('sessions') && controller.action_name.eql?('new') || controller.controller_name.eql?('homes') && controller.action_name.eql?('index')) %>
-        <%= link_to "Law Enforcement Agency Informatics Solutions", '#', id: "logo" %>
+        <%= link_to "Gujarat Forensic Sciences University", '#', id: "logo" %>
       <% else %>
         <%= link_to "Leais", '#', id: "logo" %>
       <% end %>
@@ -16,6 +16,7 @@
                 <li><%= link_to 'Multiple SDR Search', multiple_sdr_search_sdrs_path %></li>
               </ul>
             </li>
+            <li><%= link_to "CDR Analysis", cdrs_path %></li>
             <li><%= link_to "Tower search", new_cell_tower_path %></li>
             <li><%= link_to "Vehicle search", new_rto_path %></li>
             <li><%= link_to "IP/Domain lookup", new_ipdr_path %></li>

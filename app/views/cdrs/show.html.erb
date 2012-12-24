@@ -1,0 +1,149 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mobile no:</b>
+  <%= @cdr.mobile_no %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @cdr.name %>
+</p>
+
+<p>
+  <b>Case no:</b>
+  <%= @cdr.case_no %>
+</p>
+
+<%= link_to 'Back', cdrs_path %>
+
+<p>Call Frequency Report</p>
+
+<ul class="breadcrumb">
+  <li class="call_out"><a href="#">Call OUt</a> <span class="divider">/</span></li>
+  <li class="call_in"><a href="#">Call In</a> <span class="divider">/</span></li>
+  <li class="sms_out"><a href="#">SMS OUT</a> <span class="divider">/</span></li>
+  <li class="sms_in"><a href="#">SMS In</a> <span class="divider">/</span></li>
+  <li class="call_forward"><a href="#">Forwarded Calls</a> <span class="divider">/</span></li>
+  <li class="cell_count"><a href="#">Cell Tower</a> <span class="divider">/</span></li>
+  <li class="active">Data</li>
+</ul>
+
+<div class="mobile_out">
+  Out Records
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Calling Number</th>
+      <th>Called Number</th>
+      <th>Frequency</th>
+    </tr>
+
+  <% @out_going_frequency.count.each do |out_going| %>
+    <tr>
+      <td><%= out_going[0] %></td>
+      <td><%= @cdr.mobile_no %></td>
+      <td><%= out_going[1] %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div class="mobile_in" style="display:none;">
+  IN Records
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Calling Number</th>
+      <th>Called Number</th>
+      <th>Frequency</th>
+    </tr>
+
+  <% @terminating_frequency.count.each do |out_going| %>
+    <tr>
+      <td><%= out_going[0] %></td>
+      <td><%= @cdr.mobile_no %></td>
+      <td><%= out_going[1] %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div class="mobile_sms_out" style="display:none;">
+  SMS Out Records
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Message Sender</th>
+      <th>Message Receiver</th>
+      <th>Frequency</th>
+    </tr>
+
+  <% @out_going_msg_frequency.count.each do |out_going| %>
+    <tr>
+      <td><%= @cdr.mobile_no %></td>
+      <td><%= out_going[0] %></td>
+      <td><%= out_going[1] %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div class="mobile_sms_in" style="display:none;">
+  SMS In Records
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Message Sender</th>
+      <th>Message Receiver</th>
+      <th>Frequency</th>
+    </tr>
+
+  <% @in_coming_msg_frequency.count.each do |out_going| %>
+    <tr>
+      <td><%= out_going[0] %></td>
+      <td><%= @cdr.mobile_no %></td>
+      <td><%= out_going[1] %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div class="all_cell_fre" style="display:none;">
+  SMS In Records
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Cdr Number</th>
+      <th>Cell-Tower</th>
+      <th>Frequency</th>
+    </tr>
+
+  <% @cell_tower_frequency.count.each do |out_going| %>
+    <tr>
+      <td><%= @cdr.mobile_no %></td>
+      <td><%= out_going[0] %></td>
+      <td><%= out_going[1] %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+<div class="call_forward_detail" style="display:none;">
+  Call Forward Details
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Call Date</th>
+      <th>Calling Number</th>
+      <th>Called Number</th>
+    </tr>
+
+  <% @call_forward_frequency.each do |call_forward| %>
+    <tr>
+      <td><%= call_forward.call_date %></td>
+      <td><%= call_forward.calling_number.to_i %></td>
+      <td><%= call_forward.called_number.to_i %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+
+
+
+
+

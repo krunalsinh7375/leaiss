@@ -8,6 +8,7 @@ SdrData::Application.routes.draw do
   resources :sessions
   resources :activities
   resources :homes
+  resources :cdrs
 
   resources :sdrs do
     collection do

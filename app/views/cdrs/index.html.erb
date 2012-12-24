@@ -1,0 +1,23 @@
+<h1>Listing cdrs</h1>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Mobile no</th>
+    <th>Name</th>
+    <th>Case no</th>
+    <th></th>
+  </tr>
+
+<% @cdrs.each do |cdr| %>
+  <tr>
+    <td><%= cdr.mobile_no %></td>
+    <td><%= cdr.name %></td>
+    <td><%= cdr.case_no %></td>
+    <td><%= link_to 'Show', cdr %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cdr', new_cdr_path %>
