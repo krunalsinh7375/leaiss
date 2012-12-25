@@ -6,7 +6,7 @@ class CellTowersController < ApplicationController
 
   def show
     @cell_tower = CellTower.find_by_cell_id(params[:id])
-
+    @json = @cell_tower.to_gmaps4rails
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cell_tower }

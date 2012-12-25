@@ -46,3 +46,9 @@
     </p>
   </fieldset>
 </div>
+
+<%= gmaps({
+       "map_options" => { "auto_zoom" => false},
+       "markers"     => { "data" => @json }
+      })
+%>

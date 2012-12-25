@@ -38,55 +38,55 @@ function update_search_filed(){
 }
 
 $('.call_out').live('click', function() {
+  $('.mobile_out').show();
   $('.mobile_in').hide();
   $('.mobile_sms_out').hide();
   $('.mobile_sms_in').hide();
   $('.all_cell_fre').hide();
-  $('.mobile_out').show();
-  $('.call_forward_detail').hde();
+  $('.call_forward_detail').hide();
 });
 
 $('.call_in').live('click', function() {
   $('.mobile_out').hide();
+  $('.mobile_in').show();
   $('.mobile_sms_out').hide();
   $('.mobile_sms_in').hide();
   $('.all_cell_fre').hide();
-  $('.mobile_in').show();
-  $('.call_forward_detail').hde();
+  $('.call_forward_detail').hide();
 });
 
 $('.sms_out').live('click', function() {
   $('.mobile_out').hide();
-  $('.mobile_sms_out').show();
   $('.mobile_in').hide();
+  $('.mobile_sms_out').show();
   $('.mobile_sms_in').hide();
   $('.all_cell_fre').hide();
-  $('.call_forward_detail').hde();
+  $('.call_forward_detail').hide();
 });
 
 $('.sms_in').live('click', function() {
   $('.mobile_out').hide();
-  $('.mobile_sms_out').hide();
   $('.mobile_in').hide();
-  $('.all_cell_fre').hide();
+  $('.mobile_sms_out').hide();
   $('.mobile_sms_in').show();
-  $('.call_forward_detail').hde();
+  $('.all_cell_fre').hide();
+  $('.call_forward_detail').hide();
 });
 
 $('.cell_count').live('click', function() {
   $('.mobile_out').hide();
-  $('.mobile_sms_out').hide();
   $('.mobile_in').hide();
-  $('.all_cell_fre').show();
+  $('.mobile_sms_out').hide();
   $('.mobile_sms_in').hide();
+  $('.all_cell_fre').show();
   $('.call_forward_detail').hide();
 });
 
 $('.call_forward').live('click', function() {
   $('.mobile_out').hide();
-  $('.mobile_sms_out').hide();
   $('.mobile_in').hide();
-  $('.all_cell_fre').hide();
+  $('.mobile_sms_out').hide();
   $('.mobile_sms_in').hide();
+  $('.all_cell_fre').hide();
   $('.call_forward_detail').show();
 });

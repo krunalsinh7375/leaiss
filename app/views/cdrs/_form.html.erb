@@ -1,34 +1,38 @@
-<%= form_for(@cdr, :html => { :multipart => true }) do |f| %>
-  <% if @cdr.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cdr.errors.count, "error") %> prohibited this cdr from being saved:</h2>
+<div class="well">
+  <fieldset>
+    <legend>Add new cdr</legend>
+    <%= form_for(@cdr, :html => { :multipart => true }) do |f| %>
+      <% if @cdr.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@cdr.errors.count, "error") %> prohibited this cdr from being saved:</h2>
 
-      <ul>
-      <% @cdr.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @cdr.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= f.hidden_field :user_id, :value => current_user %>
-  <div class="field">
-    <%= f.label :mobile_no %><br />
-    <%= f.text_field :mobile_no %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :case_no %><br />
-    <%= f.text_field :case_no %>
-  </div>
-  <div class-'field'>
-    <%= f.file_field :file %>
-    <%#= file_field_tag :file %>
-    <%#= file_field_tag 'attachment' %></div>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <%= f.hidden_field :user_id, :value => current_user %>
+      <p>
+        <%= f.label :mobile_no %>
+        <%= f.text_field :mobile_no %>
+      </p>
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </p>
+      <p>
+        <%= f.label :case_no %>
+        <%= f.text_field :case_no %>
+      </p>
+      <p>
+        <%= f.label :file %>
+        <%= f.file_field :file %>
+      </p>
+      
+      <%= submit_tag "Submit", class: 'btn'%>
+    <% end %>
+  </fieldset>
+</div>
+

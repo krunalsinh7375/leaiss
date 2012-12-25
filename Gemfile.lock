@@ -45,6 +45,7 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
+    gmaps4rails (1.5.6)
     google-spreadsheet-ruby (0.3.0)
       google_drive (>= 0.3.0)
     google_drive (0.3.2)
@@ -150,6 +151,7 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass (= 2.1)
   coffee-rails (~> 3.2.1)
+  gmaps4rails
   jquery-rails
   kaminari
   mysql2
