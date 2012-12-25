@@ -3,7 +3,7 @@ class CdrsController < ApplicationController
   before_filter :authorize_person
   
   def index
-    @cdrs = Cdr.all
+    @cdrs = Cdr.order("id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,12 +13,12 @@ class CdrsController < ApplicationController
 
   def show
     @cdr = Cdr.find(params[:id])
-    @out_going_frequency    = @cdr.cdr_records.where("call_type = ?", 'MO').group("called_number")
-    @terminating_frequency  = @cdr.cdr_records.where("call_type = ?", 'MT').group("calling_number")
-    @out_going_msg_frequency = @cdr.cdr_records.where("call_type = ?", 'SO').group('called_number')
-    @in_coming_msg_frequency = @cdr.cdr_records.where("call_type = ?", 'ST').group('calling_number')
-    @call_forward_frequency  = @cdr.cdr_records.where("call_type = ?", 'CF')
-    @cell_tower_frequency    = @cdr.cdr_records.group('first_cell_id')
+    @out_going_frequency      = @cdr.cdr_records.get_frequency('MO').group("called_number")
+    @terminating_frequency    = @cdr.cdr_records.get_frequency('MT').group("calling_number")
+    @out_going_msg_frequency  = @cdr.cdr_records.get_frequency('SO').group('called_number')
+    @in_coming_msg_frequency  = @cdr.cdr_records.get_frequency('ST').group('calling_number')
+    @call_forward_frequency   = @cdr.cdr_records.get_frequency('CF')
+    @cell_tower_frequency     = @cdr.cdr_records.group('first_cell_id')
 
     respond_to do |format|
       format.html # show.html.erb

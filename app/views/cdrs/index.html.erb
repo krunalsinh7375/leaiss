@@ -8,6 +8,7 @@
       <th>Mobile no</th>
       <th>Name</th>
       <th>Case no</th>
+      <th>Uploaded Date</th>
       <th></th>
     </tr>
 
@@ -16,6 +17,7 @@
       <td><%= cdr.mobile_no %></td>
       <td><%= cdr.name %></td>
       <td><%= cdr.case_no %></td>
+      <td><%= cdr.created_at.strftime("%b %d %I:%M %p")  %></td>
       <td><%= link_to 'Show', cdr %></td>
     </tr>
   <% end %>

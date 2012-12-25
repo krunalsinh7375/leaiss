@@ -3,6 +3,8 @@ class CdrRecord < ActiveRecord::Base
 
   belongs_to :cdr
   
+  scope :get_frequency, lambda{ |call_type| where(call_type: call_type)}
+
   def self.import(file, cdr_id)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
