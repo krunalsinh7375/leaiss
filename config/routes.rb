@@ -8,7 +8,6 @@ SdrData::Application.routes.draw do
   resources :sessions
   resources :activities
   resources :homes
-  resources :cdrs
 
   resources :sdrs do
     collection do
@@ -43,6 +42,12 @@ SdrData::Application.routes.draw do
     end
   end
 
+  resources :cdrs do 
+    collection do
+      get :show_map
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

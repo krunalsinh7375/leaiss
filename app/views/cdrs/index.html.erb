@@ -18,7 +18,7 @@
       <td><%= cdr.name %></td>
       <td><%= cdr.case_no %></td>
       <td><%= cdr.created_at.strftime("%b %d %I:%M %p")  %></td>
-      <td><%= link_to 'Show', cdr %></td>
+      <td><%= link_to 'Show', cdr %> | <%= link_to "Show map", show_map_cdrs_path(:id => cdr) %></td>
     </tr>
   <% end %>
   </table>

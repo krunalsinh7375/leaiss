@@ -53,4 +53,42 @@ class CdrsController < ApplicationController
     end
   end
 
+  def show_map
+    @cdr = Cdr.find(params[:id])
+
+    @array = []
+    @polylines = []
+
+    @cdr.cdr_records.order("call_date DESC").each do |cdr_rec|
+      cell = CellTower.find_by_cgi(cdr_rec.first_cell_id)
+      unless cell.nil?
+        @array << {"description"=> "#{cell.try(:address)}", "title" => "#{cell.try(:cgi)}", "lng" =>  "#{cell.try(:longitude)}", "lat" => "#{cell.try(:latitude)}"} 
+        unless (cell.latitude.eql?('#N/A') && cell.longitude.eql?('#N/A'))
+          @polylines << {"lng" =>  "#{cell.try(:longitude)}", "lat" => "#{cell.try(:latitude)}" }
+        end
+      end
+    end
+
+    first_cell = CellTower.find_by_cgi(@cdr.cdr_records.first.first_cell_id)
+    last_cell  = CellTower.find_by_cgi(@cdr.cdr_records.last.first_cell_id)
+
+    @first_cell_json =  "#{first_cell.latitude}, #{first_cell.longitude}"
+    @last_cell_json = "#{last_cell.latitude}, #{last_cell.longitude}"
+
+    first = 1
+    last = @cdr.cdr_records.count - 1
+    all_traverse_points = @cdr.cdr_records[first..last]
+
+    @all_trs = []
+    all_traverse_points.each do |cell|
+      cell = CellTower.find_by_cgi(cell.first_cell_id)
+      unless cell.nil?
+        unless (cell.latitude.eql?('#N/A') && cell.longitude.eql?('#N/A'))
+          @all_trs << "#{cell.latitude}, #{cell.longitude}"
+        end
+      end
+    end
+    @all_trs = @all_trs.sort {|a, b| a <=> b}
+  end
+
 end

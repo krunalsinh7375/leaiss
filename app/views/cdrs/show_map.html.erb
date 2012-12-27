@@ -1,0 +1,9 @@
+<%= gmaps({
+    "map_options" => {"auto_zoom" => false},
+    "markers"     => { "data" => @array[1..250].uniq.to_json},
+    "direction"   => { "data"    => { "from" => @all_trs.first, "to" => @all_trs.last},
+                      "options" => {"waypoints" => [@all_trs[2..9]].flatten, "travelMode" => "WALKING", "display_panel" => true, "panel_id" => "instructions"}
+                      
+     }
+    })
+    %>
