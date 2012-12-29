@@ -23,6 +23,12 @@ class CdrsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cdr }
+      format.pdf do
+        pdf = CdrAnalysis.new(@cdr)
+        send_data pdf.render, filename: "cdr analysis for #{@cdr.mobile_no}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
