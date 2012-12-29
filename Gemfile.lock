@@ -154,6 +154,9 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     whois (2.7.0)
+    will_paginate (3.0.3)
+    will_paginate-bootstrap (0.2.1)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -174,3 +177,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   whois
+  will_paginate-bootstrap

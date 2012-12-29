@@ -1,4 +1,5 @@
-<div class="well">
+<div class="">
+  <% unless flash[:notice].nil? %> <%= flash[:notice] %> <% end %>
   <fieldset>
     <legend>Search SDR Detail</legend>
     <%= form_tag('/sdrs/fetch_sdr') do -%>

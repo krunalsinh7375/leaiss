@@ -2,7 +2,9 @@
 <legend>Activites</legend>
 
 <div>
-  <div><%= paginate @activities %></div>
+  <div class="pagination pagination-centered">
+    <%= will_paginate @activities, :renderer => BootstrapPagination::Rails %>
+  </div>
   <table class="table table-striped table-bordered table-condensed">
     <thead>
       <tr>
@@ -27,5 +29,8 @@
       <% end %>
     </tbody>
   </table>
-  <div><%= paginate @activities %></div>
+  
+  <div class="pagination pagination-centered">
+    <%= will_paginate @activities, :renderer => BootstrapPagination::Rails %>
+  </div>
 </div>
