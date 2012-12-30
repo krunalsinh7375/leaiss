@@ -1,0 +1,21 @@
+<h5>SMS In Frequency</h5>
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Message Sender</th>
+    <th>Message Receiver</th>
+    <th>Frequency</th>
+  </tr>
+
+<% @in_coming_msg_frequency.count.sort {|x,y| y[1] <=> x[1] }.each do |out_going| %>
+  <tr>
+    <td><%= out_going[0] %></td>
+    <td><%= @cdr.mobile_no %></td>
+    <td>
+      <% val = calculate_progress_report_margin(@in_coming_msg_frequency.count.sort {|x,y| y[1] <=> x[1] }.first) %>
+      <div class="progress">
+        <%= out_going[1] %>
+        <div class="bar" style="width: <%= (out_going[1].to_f/val) %>%;"></div>
+    </td>
+  </tr>
+<% end %>
+</table>

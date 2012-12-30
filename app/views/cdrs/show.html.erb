@@ -1,5 +1,5 @@
 <div class="">
-  <div class='right_alignment'><%= link_to image_tag("acrobat_100x100.jpg") + ' PDF Report', cdr_path(@cdr, format: "pdf"), :target => "_blank" %> </div>
+  <div class='right_alignment'><%= link_to image_tag("pdf_icon.png") + ' PDF Report', cdr_path(@cdr, format: "pdf"), :target => "_blank" %> </div>
   <p id="notice"><%= notice %></p>
 
   <p>
@@ -17,7 +17,7 @@
     <%= @cdr.case_no %>
   </p>
 
-  <%= link_to 'Back', cdrs_path %>
+  <%= link_to 'Back', cdrs_path, :class => 'btn btn-info btn-mini' %>
 
   <h3>Frequency Reports</h3>
   <ul class="breadcrumb">
@@ -31,116 +31,26 @@
   </ul>
 
   <div class="mobile_out">
-    <h5>Out Frequency Report</h5>
-    <table class="table table-striped table-bordered table-condensed">
-      <tr>
-        <th>Calling Number</th>
-        <th>Called Number</th>
-        <th>Frequency</th>
-      </tr>
-
-    <% @out_going_frequency.count.sort {|x,y| y[1] <=> x[1] }.each do |out_going| %>
-      <tr>
-        <td><%= @cdr.mobile_no %></td>
-        <td><%= out_going[0] %></td>
-        <td><%= out_going[1] %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render "out_going_call_frequency" %>
   </div>
 
   <div class="mobile_in" style="display:none;">
-    <h5>IN Frequency</h5>
-    <table class="table table-striped table-bordered table-condensed">
-      <tr>
-        <th>Calling Number</th>
-        <th>Called Number</th>
-        <th>Frequency</th>
-      </tr>
-
-    <% @terminating_frequency.count.sort {|x,y| y[1] <=> x[1] }.each do |out_going| %>
-      <tr>
-        <td><%= out_going[0] %></td>
-        <td><%= @cdr.mobile_no %></td>
-        <td><%= out_going[1] %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render "in_coming_call_frequency" %>
   </div>
 
   <div class="mobile_sms_out" style="display:none;">
-    <h5>SMS Out Frequency</h5>
-    <table class="table table-striped table-bordered table-condensed">
-      <tr>
-        <th>Message Sender</th>
-        <th>Message Receiver</th>
-        <th>Frequency</th>
-      </tr>
-
-    <% @out_going_msg_frequency.count.sort {|x,y| y[1] <=> x[1] }.each do |out_going| %>
-      <tr>
-        <td><%= @cdr.mobile_no %></td>
-        <td><%= out_going[0] %></td>
-        <td><%= out_going[1] %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render 'out_going_sms_frequency' %>
   </div>
 
   <div class="mobile_sms_in" style="display:none;">
-    <h5>SMS In Frequency</h5>
-    <table class="table table-striped table-bordered table-condensed">
-      <tr>
-        <th>Message Sender</th>
-        <th>Message Receiver</th>
-        <th>Frequency</th>
-      </tr>
-
-    <% @in_coming_msg_frequency.count.sort {|x,y| y[1] <=> x[1] }.each do |out_going| %>
-      <tr>
-        <td><%= out_going[0] %></td>
-        <td><%= @cdr.mobile_no %></td>
-        <td><%= out_going[1] %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render "in_coming_sms_frequency" %>
   </div>
 
   <div class="all_cell_fre" style="display:none;">
-    <h5>Cell Tower Frequency</h5>
-    <table class="table table-striped table-bordered table-condensed">
-      <tr>
-        <th>Cdr Number</th>
-        <th>Cell-Tower</th>
-        <th>Frequency</th>
-      </tr>
-
-    <% @cell_tower_frequency.count.sort {|x,y| y[1] <=> x[1] }.each do |out_going| %>
-      <tr>
-        <td><%= @cdr.mobile_no %></td>
-        <td><%= out_going[0] %></td>
-        <td><%= out_going[1] %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render 'cell_tower_frequency' %>
   </div>
 
   <div class="call_forward_detail" style="display:none;">
-    <h5>Call Forward Details</h5>
-    <table class="table table-striped table-bordered table-condensed">
-      <tr>
-        <th>Call Date</th>
-        <th>Calling Number</th>
-        <th>Called Number</th>
-      </tr>
-
-    <% @call_forward_frequency.each do |call_forward| %>
-      <tr>
-        <td><%= call_forward.call_date %></td>
-        <td><%= call_forward.calling_number.to_i %></td>
-        <td><%= call_forward.called_number.to_i %></td>
-      </tr>
-    <% end %>
-    </table>
+    <%= render 'call_forward_frequency' %>
   </div>
 </div>

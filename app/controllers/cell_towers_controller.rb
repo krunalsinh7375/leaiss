@@ -25,8 +25,8 @@ class CellTowersController < ApplicationController
   def fetch_cell_tower
     @cell_tower = CellTower.find_by_cell_id(params[:cell_id])
     if @cell_tower.nil?
-      flash[:notice] = "Please provide correct Details"
-      redirect_to new_sdr_path
+      flash[:error] = "Please provide correct Details"
+      redirect_to new_cell_tower_path
     else
       
       redirect_to cell_tower_path(@cell_tower)

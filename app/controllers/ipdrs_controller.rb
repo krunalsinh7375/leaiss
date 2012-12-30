@@ -12,12 +12,12 @@ class IpdrsController < ApplicationController
       begin
         @response_data  = Whois.query(params[:ip_or_url])
       rescue Exception => e
-        flash[:notice] = "Please enter correct details"
+        flash[:error] = "Please enter correct details"
         redirect_to new_ipdr_path
         # return false
       end
     else
-      flash[:notice] = "Please enter correct details"
+      flash[:error] = "Please enter correct details"
       redirect_to new_ipdr_path
     end
   end

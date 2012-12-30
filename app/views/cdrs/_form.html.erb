@@ -3,7 +3,7 @@
     <legend>Add new cdr</legend>
     <%= form_for(@cdr, :html => { :multipart => true }) do |f| %>
       <% if @cdr.errors.any? %>
-        <div id="error_explanation">
+        <div id="error_explanation" class='alert-error'>
           <h2><%= pluralize(@cdr.errors.count, "error") %> prohibited this cdr from being saved:</h2>
 
           <ul>

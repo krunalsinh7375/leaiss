@@ -1,0 +1,22 @@
+<h5>Call Forward Details</h5>
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Call Date</th>
+    <th>Calling Number</th>
+    <th>Called Number</th>
+  </tr>
+
+<% @call_forward_frequency.each do |call_forward| %>
+  <tr>
+    <td><%= call_forward.call_date %></td>
+    <td><%= call_forward.calling_number.to_i %></td>
+    <td>
+      <% val = calculate_progress_report_margin(@out_going_frequency.count.sort {|x,y| y[1] <=> x[1] }.first) %>
+      <div class="progress">
+        <%= call_forward.called_number.to_i %>
+        <div class="bar" style="width: <%= (call_forward.called_number.to_f/val) %>%;"></div>
+      </div>
+    </td>
+  </tr>
+<% end %>
+</table>

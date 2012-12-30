@@ -1,5 +1,6 @@
 <div class="">
-  <% unless flash[:notice].nil? %> <%= flash[:notice] %> <% end %>
+  <% unless flash[:notice].nil? %> <div class='alert'><%= flash[:notice] %></div><% end %>
+  <% unless flash[:error].nil? %> <div class='alert alert-error'><%= flash[:error] %></div><% end %>
   <fieldset>
     <legend>Search SDR Detail</legend>
     <%= form_tag('/sdrs/fetch_sdr') do -%>

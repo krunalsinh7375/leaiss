@@ -22,7 +22,7 @@ class SdrsController < ApplicationController
   def fetch_sdr
     @sdr = Sdr.find_by_mobile_number(params[:mobile_number])
     if @sdr.nil?
-      flash[:notice] = "Please provide correct Mobile number"
+      flash[:error] = "Please provide correct Mobile number"
       redirect_to new_sdr_path
     else
       redirect_to sdr_path(@sdr)

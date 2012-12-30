@@ -1,5 +1,5 @@
 <div class="">
-  <p id="notice"><%= notice %></p>
+  <% unless flash[:error].nil? %> <div class='alert alert-error'><%= flash[:error] %></div><% end %>
   <fieldset>
     <legend>IP/Domian lookup</legend>
     <%= form_tag('/ipdrs/ipdr_lookup') do -%>

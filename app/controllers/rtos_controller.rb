@@ -29,7 +29,7 @@ class RtosController < ApplicationController
     
     @rto_detail = detail
     if @rto_detail.nil?
-        flash[:notice] = "Please provide correct details"
+        flash[:error] = "Please provide correct details"
         redirect_to new_rto_path
     else
       #code for add entry in activity table
