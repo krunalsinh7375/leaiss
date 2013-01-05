@@ -4,7 +4,7 @@
       <% if (controller.controller_name.eql?('sessions') && controller.action_name.eql?('new') || controller.controller_name.eql?('homes') && controller.action_name.eql?('index')) %>
         <%= link_to "Gujarat Forensic Sciences University", '#', id: "logo" %>
       <% else %>
-        <%= link_to "Leais", '#', id: "logo" %>
+        <%= link_to "Leais", new_sdr_path, id: "logo" %>
       <% end %>
       <nav>
         <% if current_user %>

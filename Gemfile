@@ -36,7 +36,8 @@ gem 'roo'
 
 gem 'gmaps4rails'
 
-gem "prawn"
+# gem "prawn"
+gem 'prawn', git: 'git://github.com/prawnpdf/prawn.git'
 gem 'will_paginate-bootstrap'
 
 # To use ActiveModel has_secure_password

@@ -15,9 +15,10 @@
     </tr>
 
   <% @cdrs.each do |cdr| %>
+    <% sdr = Sdr.find_by_mobile_number(cdr.mobile_no) %>
     <tr>
       <td><%= cdr.mobile_no %></td>
-      <td><%= cdr.name %></td>
+      <td><%= sdr.name %></td>
       <td><%= cdr.case_no %></td>
       <td><%= cdr.created_at.strftime("%b %d %I:%M %p")  %></td>
       <td><%= link_to 'Show', cdr %> | <%= link_to "Show map", show_map_cdrs_path(:id => cdr) %></td>

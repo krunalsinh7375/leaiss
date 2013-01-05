@@ -13,7 +13,7 @@
           </ul>
         </div>
       <% end %>
-      <%= f.hidden_field :user_id, :value => current_user %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       <p>
         <%= f.label :mobile_no %>
         <%= f.text_field :mobile_no %>

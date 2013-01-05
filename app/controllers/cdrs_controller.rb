@@ -13,6 +13,7 @@ class CdrsController < ApplicationController
 
   def show
     @cdr = Cdr.find(params[:id])
+    @sdr = Sdr.find_by_mobile_number(@cdr.mobile_no)
     @out_going_frequency      = @cdr.cdr_records.get_frequency('MO').group("called_number")
     @terminating_frequency    = @cdr.cdr_records.get_frequency('MT').group("calling_number")
     @out_going_msg_frequency  = @cdr.cdr_records.get_frequency('SO').group('called_number')
@@ -48,8 +49,8 @@ class CdrsController < ApplicationController
       Cdr.transaction do
         if @cdr.save
           @cdr.cdr_records.import(params[:cdr][:file], @cdr.id)
-          @cdr.update_attributes(:user_id => current_user.id)
-          format.html { redirect_to @cdr, notice: 'Cdr was successfully created.' }
+          log_entry(@cdr, request)
+          format.html { redirect_to @cdr, notice: 'Cdr was created successfully.' }
           format.json { render json: @cdr, status: :created, location: @cdr }
         else
           format.html { render action: "new" }
@@ -97,4 +98,10 @@ class CdrsController < ApplicationController
     @all_trs = @all_trs.sort {|a, b| a <=> b}
   end
 
+  private
+
+  def log_entry(cdr, request)
+    #create activity_log entry
+    current_user.activities.create_activity_log(cdr.user, request, Time.now, cdr.mobile_no, 'CDR Analysis')
+  end
 end
