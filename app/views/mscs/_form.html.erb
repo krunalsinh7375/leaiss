@@ -1,0 +1,15 @@
+<div class="">
+  <% unless flash[:notice].nil? %> <div class='alert'><%= flash[:notice] %></div><% end %>
+  <% unless flash[:error].nil? %> <div class='alert alert-error'><%= flash[:error] %></div><% end %>
+  <fieldset>
+    <legend>Search Operator Detail</legend>
+    <%= form_tag('/mscs/fetch_msc_code') do -%>
+      <div class="field">
+        <%#= text_field_tag :mobile_number %>
+        <%= autocomplete_field_tag :code, '', autocomplete_msc_code_mscs_path, :size => 35, :placeholder => "Enter Mobile Number" %>
+      </div>
+
+      <div><%= submit_tag 'Search', class: 'btn' %></div>
+    <% end -%>
+  </fieldset>
+</div>

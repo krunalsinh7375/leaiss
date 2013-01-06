@@ -26,16 +26,17 @@ class CdrAnalysis < Prawn::Document
     table(out_going_frequency, :header => true, 
                                :row_colors => ["DDDDDD", "FFFFFF"], 
                                :cell_style => { :size => 8},
-                               :column_widths => [180, 180, 80],
+                               :column_widths => [100, 100, 160, 80],
                                :position => :center)
   end
 
   def out_going_frequency
     out_going_cdrs = @cdr.cdr_records.get_frequency('MO').group("called_number")
     
-    [["Calling Number", "Called Number", "Frequency"]] +
+    [["Calling Number", "Called Number", 'Operator', "Frequency"]] +
     out_going_cdrs.count.sort {|x,y| y[1] <=> x[1] }.map do |map|
-      [@cdr.mobile_no, map[0], map[1]]
+      operator = list_operator(map[0])
+      [@cdr.mobile_no, map[0], operator, map[1]]
     end
   end
 
@@ -48,5 +49,16 @@ class CdrAnalysis < Prawn::Document
     :start_count_at => 1,
     :color => "333333" }
     number_pages string, options
+  end
+
+  def get_initial_mobile_number_digit(mobile_number)
+    mobile_number = mobile_number.size.eql?(12) ? mobile_number[2..11] : mobile_number
+    return mobile_number[0..3]
+  end
+
+  def list_operator(mobile_number)
+    msc_code = Msc.find_by_code(get_initial_mobile_number_digit(mobile_number))
+    detail = msc_code.nil? ? 'NA' : "#{msc_code.try(:operator)}-#{msc_code.try(:circle)}"
+    return detail
   end
 end

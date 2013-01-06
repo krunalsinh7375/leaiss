@@ -1,0 +1,2 @@
+module MscsHelper
+end

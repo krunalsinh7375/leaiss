@@ -48,6 +48,13 @@ SdrData::Application.routes.draw do
     end
   end
   
+  resources :mscs do
+    collection do
+      post :fetch_msc_code
+      get :autocomplete_msc_code
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

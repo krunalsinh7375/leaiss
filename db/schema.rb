@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121221194845) do
+ActiveRecord::Schema.define(:version => 20130105091343) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -47,14 +47,20 @@ ActiveRecord::Schema.define(:version => 20121221194845) do
   end
 
   create_table "cell_towers", :force => true do |t|
-    t.string   "cell_id"
-    t.string   "lac"
-    t.string   "cgi"
-    t.string   "address"
-    t.date     "latitude"
-    t.string   "longitude"
-    t.string   "tower_type"
-    t.string   "company"
+    t.string "cell_id",    :limit => 15
+    t.string "lac",        :limit => 20
+    t.string "cgi",        :limit => 20
+    t.string "address"
+    t.string "latitude",   :limit => 12
+    t.string "longitude",  :limit => 12
+    t.string "tower_type", :limit => 5
+    t.string "company",    :limit => 20
+  end
+
+  create_table "mscs", :force => true do |t|
+    t.integer  "code"
+    t.string   "operator"
+    t.string   "circle"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

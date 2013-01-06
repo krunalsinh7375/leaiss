@@ -3,6 +3,7 @@
   <tr>
     <th>Calling Number</th>
     <th>Called Number</th>
+    <th>Operator</th>
     <th>Frequency</th>
   </tr>
 
@@ -10,6 +11,14 @@
   <tr>
     <td><%= @cdr.mobile_no %></td>
     <td><%= out_going[0] %></td>
+    <td>
+      <% msc_code = Msc.find_by_code(get_initial_digits(out_going[0])) %>
+      <% if msc_code.nil? %>
+        NA
+      <% else %>
+        <%= "#{msc_code.try(:operator)}-#{msc_code.try(:circle)}" %>
+      <% end %>
+    </td>
     <td>
       <% val = calculate_progress_report_margin(@out_going_frequency.count.sort {|x,y| y[1] <=> x[1] }.first) %>
       <div class="progress">
