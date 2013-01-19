@@ -9,4 +9,9 @@ module ApplicationHelper
     return mobile_number[0..3]
   end
 
+  def get_active_class(controller_name)
+    if params[:controller] == controller_name
+      "active"
+    end
+  end
 end
